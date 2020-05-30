@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,8 @@ import { InventoryTableComponent } from './inventory-table/inventory-table.compo
 import { AddProviderComponent } from './add-provider/add-provider.component';
 import { AddSubsidiaryComponent } from './add-subsidiary/add-subsidiary.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -19,13 +22,16 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     InventoryTableComponent,
     AddProviderComponent,
     AddSubsidiaryComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
