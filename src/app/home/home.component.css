@@ -1,0 +1,11 @@
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: calc(100vh - var(--navbarh));
+}
+.logo {
+    width: 300px;
+    height: auto;    
+}
