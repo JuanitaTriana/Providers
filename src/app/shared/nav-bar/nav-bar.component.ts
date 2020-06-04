@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'nav-bar',
@@ -9,7 +11,9 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
   isHome: boolean = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, route: ActivatedRoute) {
+    const url: Observable<ActivatedRoute> = route;
+   }
   ngOnInit(): void {
   }
   goHome(): void {
@@ -21,4 +25,5 @@ export class NavBarComponent implements OnInit {
   openCart():void {
     alert('abre el carrito, cuando exista...')
   }
+
 }
