@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  isHome: boolean = true;
 
   constructor(private router: Router) { }
   ngOnInit(): void {
