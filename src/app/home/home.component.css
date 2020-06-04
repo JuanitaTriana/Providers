@@ -1,11 +1,17 @@
 .home {
     display: flex;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: calc(100vh - var(--navbarh));
 }
 .logo {
-    width: 300px;
-    height: auto;    
+    width: 250px;
+    height: auto;  
+    margin-top: -100px;  
+}
+.search-box {
+    width: 500px;
+    margin-top: 1%;
 }
