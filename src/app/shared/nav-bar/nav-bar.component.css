@@ -12,9 +12,13 @@
   font-weight: 600;
   padding: 0 20px;
 }
+.hide{
+  opacity: 0%;
+}
 .title {
   font-size: 24px;
   justify-content: start;
+  cursor: pointer;
 }
 .search-box {
   justify-self: center;
@@ -22,10 +26,16 @@
   border-radius: 1rem;
   width: 100%;
   height: 35px;
+  cursor: pointer;
 }
 .add-provider {
   justify-self: flex-end;
+  cursor: pointer;
 }
 .cart-icon {
   justify-self: flex-end;
+  cursor: pointer;
+}
+.active-item {
+ border-bottom: solid #fff 1px;
 }
