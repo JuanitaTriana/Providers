@@ -1,7 +1,7 @@
 <div class="toolbar">
   <div (click)="goHome()" class="title">Proveedores</div>
   <div *ngIf="!isHome; else elseBlock" (click)="goHome()" class="search-box"></div>
-  <div #elseBlock> </div>
+  <ng-template #elseBlock><div> </div></ng-template>
   <span (click)="goAdd()" class="add-provider">Agregar proveedor</span>
   <mat-icon (click)="openCart()" class="cart-icon">shopping_cart</mat-icon>
 </div>
