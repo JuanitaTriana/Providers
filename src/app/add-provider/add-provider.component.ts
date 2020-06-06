@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class AddProviderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+  saveProvider(): void {
+    alert('Proveedor Guardado')
+  }
+  addSubsidiary(): void{
+    this.router.navigate(['/add-subsidiary'])
   }
 
 }

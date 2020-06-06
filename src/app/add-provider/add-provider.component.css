@@ -23,3 +23,17 @@ h1{
 .mat-form-field{
     width: 100%;
 }
+.buttons{
+display: grid;
+grid-template-columns: 50% 50% ;
+}
+.add-subsidiary{
+    margin-right: 10px;
+    align-self: flex-start;
+    width: 100%;
+}
+.save-button{
+    margin-left: 10px;
+    align-self: flex-end;
+    width: 100%;
+}
