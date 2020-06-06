@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'nav-bar',
@@ -11,9 +10,10 @@ import { Observable } from 'rxjs';
 export class NavBarComponent implements OnInit {
   isHome: boolean = true;
 
-  constructor(private router: Router, route: ActivatedRoute) {
-    const url: Observable<ActivatedRoute> = route;
-   }
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) this.isHome = this.router.url === '/'
+    })}
   ngOnInit(): void {
   }
   goHome(): void {
