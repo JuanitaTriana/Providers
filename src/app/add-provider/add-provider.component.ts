@@ -47,7 +47,9 @@ export class AddProviderComponent implements OnInit {
     }
   }
   addSubsidiary(): void{
-    this.router.navigate(['/add-subsidiary'])
+    if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.nitFormControl.valid && this.phoneFormControl.valid){
+      this.router.navigate(['/add-subsidiary'])
+    }
   }
 
 }
