@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 
-
-
-
 @Component({
   selector: 'app-add-provider',
   templateUrl: './add-provider.component.html',
@@ -40,14 +37,14 @@ export class AddProviderComponent implements OnInit {
     Validators.required,
   ]);
 
-  
-
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
   saveProvider(): void {
-     alert('Proveedor Guardado'+'\n'+ 'provider info: '+'\n'+this.name +'\n'+ this.email + this.address + '\n'+ this.addre +'\n'+this.nit+'\n'+this.phone) 
+    if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.nitFormControl.valid && this.phoneFormControl.valid){
+      alert('Proveedor Guardado'+'\n'+ 'provider info: '+'\n'+this.name +'\n'+ this.email + this.address + '\n'+ this.addre +'\n'+this.nit+'\n'+this.phone) 
+    }
   }
   addSubsidiary(): void{
     this.router.navigate(['/add-subsidiary'])

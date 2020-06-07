@@ -4,7 +4,7 @@
         <div class="provider-field">
             <mat-form-field>
                 <mat-label>Nombre</mat-label>
-                <input matInput [(ngModel)]="name" name="provider-name" required type="text" placeholder="Avianca">
+                <input [formControl]="nameFormControl" matInput [(ngModel)]="name" name="provider-name" required type="text" placeholder="Avianca">
                   <mat-error *ngIf="nameFormControl.hasError('required')">
                     Nombre es <strong>requerido</strong>
                   </mat-error>
