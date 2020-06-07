@@ -26,6 +26,7 @@ h1{
 .buttons{
 display: grid;
 grid-template-columns: 50% 50% ;
+margin-top: 10px;
 }
 .add-subsidiary{
     margin-right: 10px;

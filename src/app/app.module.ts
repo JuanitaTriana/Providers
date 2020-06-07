@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +34,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
