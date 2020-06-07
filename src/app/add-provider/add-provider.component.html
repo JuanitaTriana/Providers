@@ -4,39 +4,39 @@
         <div class="provider-field">
             <mat-form-field>
                 <mat-label>Nombre</mat-label>
-                <input matInput placeholder="Avianca">
+                <input matInput [(ngModel)]="name" name="provider-name" required type="text" placeholder="Avianca">
             </mat-form-field>
         </div>
         <div class="provider-field">
             <mat-form-field>
                 <mat-label>Correo</mat-label>
-                <input matInput placeholder="avianca@gmail.com">
+                <input matInput [(ngModel)]="email" name="provider-mail" required placeholder="avianca@gmail.com">
                 <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
         </div>
         <div class="provider-field">
             <mat-form-field>
                 <mat-label>Dirección</mat-label>
-                <input matInput placeholder="Cra 5 #20-55">
+                <input matInput [(ngModel)]="address" name="provider-address" required placeholder="Cra 5 #20-55">
             </mat-form-field>
         </div>
         <div class="provider-field">
             <mat-form-field>
                 <mat-label>Dirección 2</mat-label>
-                <input matInput placeholder="Edif. Uno Oficina 701">
+                <input matInput [(ngModel)]="addre" name="provider-address2" required placeholder="Edif. Uno Oficina 701">
             </mat-form-field>
         </div>
         <div class="provider-field">
             <mat-form-field>
                 <mat-label>NIT</mat-label>
-                <input type="number" matInput placeholder="123456">
+                <input type="number" [(ngModel)]="nit" name="provider-nit" required matInput placeholder="123456">
             </mat-form-field>
         </div>
         <div class="provider-field">
             <mat-form-field>
                 <mat-label>Telefóno</mat-label>
                 <span matPrefix>+57 &nbsp;</span>
-                <input type="number" matInput placeholder="(8)-515-1787">
+                <input type="number" [(ngModel)]="phone" name="provider-phone" required matInput placeholder="(8)-515-1787">
                 <mat-icon matSuffix>phone</mat-icon>
             </mat-form-field>
         </div>
