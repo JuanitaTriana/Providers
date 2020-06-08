@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-
+import Subsidiary from './Subsidiary';
 
 @Component({
   selector: 'app-add-subsidiary',
@@ -9,7 +9,6 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class AddSubsidiaryComponent implements OnInit {
   panelOpenState = true;
-
   public name: string;
   public email: string;
   public address: string;
@@ -17,6 +16,8 @@ export class AddSubsidiaryComponent implements OnInit {
   public phone: string;
   public state: string;
   public city: string;
+
+  public subsidiaryDetails : Subsidiary[] = [];
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -48,7 +49,15 @@ export class AddSubsidiaryComponent implements OnInit {
   }
   saveSubsidiary(): void {
     if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.phoneFormControl.valid && this.stateFormControl.valid && this.cityFormControl.valid){
-      alert('Sucursal Guardada'+'\n'+ 'info: '+'\n'+this.name +'\n'+ this.email + this.address + '\n'+ this.addre +'\n'+this.phone+'\n'+this.state+'\n'+this.city) 
+      this.subsidiaryDetails.push({name: this.name, email: this.email, address: this.address, phone: this.phone, state: this.state, city: this.city})
+      alert('Sucursal Guardada!')
+      this.name=''
+      this.email=''
+      this.address=''
+      this.addre=''
+      this.phone=''
+      this.state=''
+      this.city='' 
     }
   }
 }

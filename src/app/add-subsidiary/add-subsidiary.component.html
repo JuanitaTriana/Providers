@@ -80,11 +80,25 @@
                 </div>
         </form>
         </mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let sub of subsidiaryDetails"  (opened)="panelOpenState = true"
+                            (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h2>{{sub.name}}</h2>
+            </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div>Email: {{sub.email}}</div>
+            <div>Dirección 1: {{sub.address}}</div>
+            <div>Dirección 2: {{sub.addre}}</div>
+            <div>Teléfono: {{sub.phone}}</div>
+            <div>Departamento: {{sub.state}}</div>
+            <div>Ciudad: {{sub.city}}</div>
+            <span>
+                <button class="edit-button"mat-raised-button color="primary">Editar</button>
+            </span>
+        </mat-expansion-panel>
     </mat-accordion>
-
-    
-    
-    <div class="add-productt">
+    <div class="add-products">
         <p>hola</p>
     </div>
 </div>

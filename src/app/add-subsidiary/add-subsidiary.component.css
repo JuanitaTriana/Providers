@@ -1,5 +1,5 @@
 .accordion{
-    margin-top: 5%;}
+    margin-top: 10px;}
 .add-subsidiary{
     display: grid;
     grid-template-columns: 40% 60% ;
@@ -38,4 +38,7 @@ h1{
     margin-left: 10px;
     align-self: flex-end;
     width: 100%;
+}
+.edit-button{
+    margin-top: 10px;
 }
