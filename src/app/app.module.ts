@@ -4,6 +4,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
+
 
 
 
@@ -17,6 +19,7 @@ import { AddSubsidiaryComponent } from './add-subsidiary/add-subsidiary.componen
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import {MatIconModule} from '@angular/material/icon';
+import { ProvidersListComponent } from './providers-list/providers-list.component';
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
     AddProviderComponent,
     AddSubsidiaryComponent,
     ShoppingCartComponent,
-    NavBarComponent
+    NavBarComponent,
+    ProvidersListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

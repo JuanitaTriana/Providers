@@ -19,8 +19,8 @@ export class NavBarComponent implements OnInit {
   goHome(): void {
     this.router.navigate(['/'])
   }
-  goAdd(): void {
-    this.router.navigate(['/add-provider'])
+  goList(): void {
+    this.router.navigate(['/providers-list'])
   }
   openCart():void {
     alert('abre el carrito, cuando exista...')
