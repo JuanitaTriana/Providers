@@ -2,6 +2,6 @@
   <div (click)="goHome()" class="title">Proveedores</div>
   <div *ngIf="!isHome; else elseBlock" (click)="goHome()" class="search-box"></div>
   <ng-template #elseBlock><div> </div></ng-template>
-  <span (click)="goAdd()" class="add-provider">Agregar proveedor</span>
+  <span (click)="goList()" class="providers-list">Lista de Proveedores</span>
   <mat-icon (click)="openCart()" class="cart-icon">shopping_cart</mat-icon>
 </div>

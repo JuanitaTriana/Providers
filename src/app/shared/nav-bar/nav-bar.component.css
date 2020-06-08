@@ -28,7 +28,7 @@
   height: 35px;
   cursor: pointer;
 }
-.add-provider {
+.providers-list {
   justify-self: flex-end;
   cursor: pointer;
 }
