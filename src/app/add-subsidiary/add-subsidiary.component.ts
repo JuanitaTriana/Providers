@@ -46,9 +46,9 @@ export class AddSubsidiaryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  saveProvider(): void {
-    if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.phoneFormControl.valid){
-      alert('Proveedor Guardado'+'\n'+ 'provider info: '+'\n'+this.name +'\n'+ this.email + this.address + '\n'+ this.addre +'\n'+this.phone) 
+  saveSubsidiary(): void {
+    if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.phoneFormControl.valid && this.stateFormControl.valid && this.cityFormControl.valid){
+      alert('Sucursal Guardada'+'\n'+ 'info: '+'\n'+this.name +'\n'+ this.email + this.address + '\n'+ this.addre +'\n'+this.phone+'\n'+this.state+'\n'+this.city) 
     }
   }
 }

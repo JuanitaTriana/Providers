@@ -1,13 +1,13 @@
 <div class="add-subsidiary">
-    <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true"
+    <mat-accordion class="accordion" >
+        <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
                             (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
             <mat-panel-title>
                 <h1>Agregar una Sucursal</h1>
             </mat-panel-title>
             </mat-expansion-panel-header>
-            <form class="subsidiary-form">
+            <form class="subsidiary-form"(submit)="saveSubsidiary()">
                 <div class="subsidiary-field">
                     <mat-form-field>
                         <mat-label>Nombre</mat-label>
