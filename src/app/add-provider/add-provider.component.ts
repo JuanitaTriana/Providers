@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
+import { AddProviderService } from './add-provider.service'
+import Provider from './Provider';
 
 @Component({
   selector: 'app-add-provider',
@@ -9,41 +11,41 @@ import {FormControl, Validators} from '@angular/forms';
 })
 
 export class AddProviderComponent implements OnInit {
-  public name: string;
-  public email: string;
-  public address: string;
-  public addre: string;
-  public nit: string;
-  public phone: string;
+
+  public provider: Provider = {
+    name: '',
+    email: '',
+    direction: '',
+    address2: '',
+    nic: null,
+    phone: null
+  }
+
+  constructor(private router: Router, private addProviderService: AddProviderService) { }
 
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-
   nameFormControl = new FormControl('', [
     Validators.required,
   ]);
-
   addressFormControl = new FormControl('', [
     Validators.required,
   ]);
-
   nitFormControl = new FormControl('', [
     Validators.required,
   ]);
-
   phoneFormControl = new FormControl('', [
     Validators.required,
   ]);
-
-  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
   saveProvider(): void {
     if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.nitFormControl.valid && this.phoneFormControl.valid){
-      alert('Proveedor Guardado'+'\n'+ 'provider info: '+'\n'+this.name +'\n'+ this.email + this.address + '\n'+ this.addre +'\n'+this.nit+'\n'+this.phone) 
+      this.addProviderService.addProvider(this.provider)
+      .subscribe(response => console.log(response))
     }
   }
   addSubsidiary(): void{

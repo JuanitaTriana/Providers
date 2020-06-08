@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,7 +12,10 @@ import { AddProviderComponent } from './add-provider/add-provider.component';
 import { AddSubsidiaryComponent } from './add-subsidiary/add-subsidiary.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { AddProviderService } from './add-provider/add-provider.service';
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
@@ -35,9 +36,11 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AddProviderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
