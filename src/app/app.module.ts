@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,10 +13,11 @@ import { AddProviderComponent } from './add-provider/add-provider.component';
 import { AddSubsidiaryComponent } from './add-subsidiary/add-subsidiary.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
-import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AddProviderService } from './add-provider/add-provider.service';
 import { HttpClientModule } from '@angular/common/http'
+import { MatIconModule } from '@angular/material/icon';
+import { ProvidersListComponent } from './providers-list/providers-list.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http'
     AddProviderComponent,
     AddSubsidiaryComponent,
     ShoppingCartComponent,
-    NavBarComponent
+    NavBarComponent,
+    ProvidersListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http'
     FormsModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [AddProviderService],
   bootstrap: [AppComponent]
