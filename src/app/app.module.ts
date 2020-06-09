@@ -21,8 +21,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProvidersListComponent } from './providers-list/providers-list.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
