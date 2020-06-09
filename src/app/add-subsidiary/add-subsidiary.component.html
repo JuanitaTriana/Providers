@@ -1,6 +1,6 @@
 <div class="add-subsidiary">
     <mat-accordion class="accordion" >
-        <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+        <mat-expansion-panel [expanded]="isFormOpen" (opened)="panelOpenState = true"
                             (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
             <mat-panel-title>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="buttons">
                     <button  type="submit" class="save-subsidiary" mat-raised-button color="basic">Guardar</button>
-                    <button  type="submit" class="add-products" mat-raised-button color="primary">Agregar Productos</button>
+                    <button  class="add-products" mat-raised-button color="primary">Agregar Productos</button>
                 </div>
         </form>
         </mat-expansion-panel>
@@ -94,7 +94,7 @@
             <div>Departamento: {{sub.state}}</div>
             <div>Ciudad: {{sub.city}}</div>
             <div class="details-buttons">
-                <button class="edit-button"mat-raised-button color="primary">Editar</button>
+                <button (click)="editSubsidiary(i)" class="edit-button"mat-raised-button color="primary">Editar</button>
                 <button (click)="deleteSubsidiary(i)" class="delete-button" mat-mini-fab color="warn" >
                     <mat-icon>delete</mat-icon>
                 </button>

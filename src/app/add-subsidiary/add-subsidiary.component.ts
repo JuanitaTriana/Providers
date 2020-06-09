@@ -8,6 +8,7 @@ import Subsidiary from './Subsidiary';
   styleUrls: ['./add-subsidiary.component.css']
 })
 export class AddSubsidiaryComponent implements OnInit {
+  isFormOpen = true;
   panelOpenState = true;
   public name: string;
   public email: string;
@@ -16,6 +17,8 @@ export class AddSubsidiaryComponent implements OnInit {
   public phone: string;
   public state: string;
   public city: string;
+  action: string;
+  toEdit: number;
 
   public subsidiaryDetails : Subsidiary[] = [];
 
@@ -49,8 +52,19 @@ export class AddSubsidiaryComponent implements OnInit {
   }
   saveSubsidiary(): void {
     if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.phoneFormControl.valid && this.stateFormControl.valid && this.cityFormControl.valid){
-      this.subsidiaryDetails.push({name: this.name, email: this.email, address: this.address, phone: this.phone, state: this.state, city: this.city})
-      alert('Sucursal Guardada!')
+      if (this.action === 'edit'){
+        const toEdit = this.subsidiaryDetails[this.toEdit]
+        toEdit.name = this.name
+        toEdit.email = this.email
+        toEdit.address = this.address
+        toEdit.addre = this.addre
+        toEdit.phone = this.phone
+        toEdit.state = this.state
+        toEdit.city = this.city
+      } else{
+        this.subsidiaryDetails.push({name: this.name, email: this.email, address: this.address, phone: this.phone, state: this.state, city: this.city})
+        alert('Sucursal Guardada!')
+      }
       this.name=''
       this.email=''
       this.address=''
@@ -58,11 +72,25 @@ export class AddSubsidiaryComponent implements OnInit {
       this.phone=''
       this.state=''
       this.city='' 
+      this.action = 'save'
+      this.isFormOpen = false
     }
   }
 
+  editSubsidiary(i: number): void{
+    this.action = 'edit' 
+    this.isFormOpen = true
+    this.toEdit = i
+    this.name = this.subsidiaryDetails[i].name
+    this.email = this.subsidiaryDetails[i].email
+    this.address = this.subsidiaryDetails[i].address
+    this.addre = this.subsidiaryDetails[i].addre
+    this.phone = this.subsidiaryDetails[i].phone
+    this.state = this.subsidiaryDetails[i].state
+    this.city = this.subsidiaryDetails[i].city
+  }
+
   deleteSubsidiary(i: number): void {
-    console.log(i)
     this.subsidiaryDetails.splice(i,1)
 
   }
