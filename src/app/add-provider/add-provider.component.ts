@@ -17,7 +17,6 @@ export class AddProviderComponent implements OnInit {
     name: '',
     email: '',
     direction: '',
-    address2: '',
     nic: null,
     phone: null
   }

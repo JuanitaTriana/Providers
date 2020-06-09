@@ -1,8 +1,7 @@
 export default interface Provider {
   name: string;
   email: string;
-  direction: string;
-  address2?: string;
+  direction?: string;
   nic: string;
   phone: number;
 }

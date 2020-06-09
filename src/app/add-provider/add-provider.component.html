@@ -34,12 +34,6 @@
         </div>
         <div class="provider-field">
             <mat-form-field>
-                <mat-label>Dirección 2</mat-label>
-                <input matInput [(ngModel)]="provider.address2" name="provider-address2" placeholder="Edif. Uno Oficina 701">
-            </mat-form-field>
-        </div>
-        <div class="provider-field">
-            <mat-form-field>
                 <mat-label>NIT</mat-label>
                 <input type="number" [formControl]="nitFormControl" [(ngModel)]="provider.nic" name="provider-nit" required matInput placeholder="12345-6">
                 <mat-error *ngIf="nitFormControl.hasError('required')">
