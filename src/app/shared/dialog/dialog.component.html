@@ -1,0 +1,5 @@
+<div mat-dialog-content>{{ data.text }}</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>{{ data.leftButton }}</button>
+    <button (click)="rbClick()" mat-button color="warn">{{ data.rightButton }}</button>
+</div>

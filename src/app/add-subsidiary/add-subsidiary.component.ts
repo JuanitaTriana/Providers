@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import Subsidiary from './Subsidiary';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent} from '../shared/dialog/dialog.component'
+
 
 
 @Component({
@@ -22,6 +25,9 @@ export class AddSubsidiaryComponent implements OnInit {
   action: string;
   toEdit: number;
   durationInSeconds = 5000;
+  text = 'Desea Eliminar esta sucursal';
+  leftButton = 'Cancelar';
+  rightButton = 'Eliminar';
   public subsidiaryDetails : Subsidiary[] = [];
 
   emailFormControl = new FormControl('', [
@@ -48,7 +54,7 @@ export class AddSubsidiaryComponent implements OnInit {
     Validators.required,
   ])
 
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -92,8 +98,20 @@ export class AddSubsidiaryComponent implements OnInit {
     this.city = this.subsidiaryDetails[i].city
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, { data: {
+      text: this.text,
+      leftButton: this.leftButton,
+      rightButton: this.rightButton
+    }})
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+    })
+  }
+
   deleteSubsidiary(i: number): void {
     this.subsidiaryDetails.splice(i,1)
+    this._snackBar.open('Sucursal Eliminada!', 'OK', {duration: this.durationInSeconds})
 
   }
 }
