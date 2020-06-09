@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
-import { AddProviderService } from './add-provider.service'
+import { ProviderService } from '../Provider/provider.service'
 import { LoaderService } from '../loader.service'
-import Provider from './Provider';
+import Provider from '../Provider/Provider';
 
 @Component({
   selector: 'app-add-provider',
@@ -22,7 +22,7 @@ export class AddProviderComponent implements OnInit {
     phone: null
   }
 
-  constructor(private router: Router, private addProviderService: AddProviderService, private loader: LoaderService) { }
+  constructor(private router: Router, private addProviderService: ProviderService, private loader: LoaderService) { }
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -40,6 +40,7 @@ export class AddProviderComponent implements OnInit {
       this.loader.enableLoader()
       this.addProviderService.addProvider(this.provider)
       .subscribe(response => {
+        this.router.navigate(['/providers-list'])
         this.loader.disableLoader()
       })
     }

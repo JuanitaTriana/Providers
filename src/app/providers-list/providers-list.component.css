@@ -1,0 +1,11 @@
+.providers-list {
+  padding: 20px;;
+}
+table {
+  width: 100%;
+}
+td, th {
+  padding: 0 10px !important;
+  text-align: left;
+  width: 25%;
+}

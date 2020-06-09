@@ -14,7 +14,9 @@ export class LoaderService {
   }
 
   disableLoader(): void {
-    this.subject.next(false)
+    setTimeout(() => {
+      this.subject.next(false)
+    }, 1000)
   }
 
   getLoaderStatus(): Observable<boolean> {

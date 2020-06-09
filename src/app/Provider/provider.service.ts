@@ -5,7 +5,7 @@ import Provider from './Provider';
 @Injectable({
   providedIn: 'root'
 })
-export class AddProviderService {
+export class ProviderService {
 
   constructor(private service: HttpClient) { }
 

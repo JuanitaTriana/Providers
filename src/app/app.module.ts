@@ -15,11 +15,13 @@ import { AddSubsidiaryComponent } from './add-subsidiary/add-subsidiary.componen
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { AddProviderService } from './add-provider/add-provider.service';
+import { ProviderService } from './Provider/provider.service';
 import { HttpClientModule } from '@angular/common/http'
 import { MatIconModule } from '@angular/material/icon';
 import { ProvidersListComponent } from './providers-list/providers-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -45,9 +47,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HttpClientModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
-  providers: [AddProviderService],
+  providers: [ProviderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
