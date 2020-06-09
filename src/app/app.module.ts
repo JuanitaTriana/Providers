@@ -18,6 +18,8 @@ import { AddProviderService } from './add-provider/add-provider.service';
 import { HttpClientModule } from '@angular/common/http'
 import { MatIconModule } from '@angular/material/icon';
 import { ProvidersListComponent } from './providers-list/providers-list.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { ProvidersListComponent } from './providers-list/providers-list.componen
     ReactiveFormsModule,
     MatExpansionModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressSpinnerModule
   ],
   providers: [AddProviderService],
   bootstrap: [AppComponent]
