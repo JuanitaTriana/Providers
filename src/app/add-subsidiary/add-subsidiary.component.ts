@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import Subsidiary from './Subsidiary';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-add-subsidiary',
@@ -19,7 +21,7 @@ export class AddSubsidiaryComponent implements OnInit {
   public city: string;
   action: string;
   toEdit: number;
-
+  durationInSeconds = 5000;
   public subsidiaryDetails : Subsidiary[] = [];
 
   emailFormControl = new FormControl('', [
@@ -46,7 +48,7 @@ export class AddSubsidiaryComponent implements OnInit {
     Validators.required,
   ])
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -63,7 +65,6 @@ export class AddSubsidiaryComponent implements OnInit {
         toEdit.city = this.city
       } else{
         this.subsidiaryDetails.push({name: this.name, email: this.email, address: this.address, phone: this.phone, state: this.state, city: this.city})
-        alert('Sucursal Guardada!')
       }
       this.name=''
       this.email=''
@@ -74,6 +75,7 @@ export class AddSubsidiaryComponent implements OnInit {
       this.city='' 
       this.action = 'save'
       this.isFormOpen = false
+      this._snackBar.open('Sucursal Guardada!', 'OK', {duration: this.durationInSeconds})
     }
   }
 
