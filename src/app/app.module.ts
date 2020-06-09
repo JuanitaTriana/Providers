@@ -5,6 +5,8 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -43,7 +45,8 @@ import { ProvidersListComponent } from './providers-list/providers-list.componen
     FormsModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
