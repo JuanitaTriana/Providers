@@ -39,6 +39,18 @@ h1{
     align-self: flex-end;
     width: 100%;
 }
+.details-buttons{
+    display: grid;
+    grid-template-columns: 50% 50% ;
+    margin-top: 10px;
+    width: 100%;
+}
 .edit-button{
     margin-top: 10px;
+    align-self: flex-start;
+    width: 10%;
+}
+.delete-button{
+    margin-top: 10px;
+    margin-left: 170px;
 }

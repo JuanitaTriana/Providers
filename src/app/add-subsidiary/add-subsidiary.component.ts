@@ -60,4 +60,10 @@ export class AddSubsidiaryComponent implements OnInit {
       this.city='' 
     }
   }
+
+  deleteSubsidiary(i: number): void {
+    console.log(i)
+    this.subsidiaryDetails.splice(i,1)
+
+  }
 }
