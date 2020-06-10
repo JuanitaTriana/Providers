@@ -4,4 +4,5 @@
   <ng-template #elseBlock><div> </div></ng-template>
   <span (click)="goList()" class="providers-list">Lista de Proveedores</span>
   <mat-icon (click)="openCart()" class="cart-icon">shopping_cart</mat-icon>
+  <div class="shopping-cart" [ngClass]="{'hide-cart': hideCart}"><app-shopping-cart></app-shopping-cart></div>
 </div>
