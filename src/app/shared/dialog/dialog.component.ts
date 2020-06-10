@@ -1,8 +1,10 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Dialog from './Dialog'
 import { Subject, Observable } from 'rxjs'
 import { ReturnStatement } from '@angular/compiler';
+
+
 
 @Component({
   selector: 'app-dialog',
@@ -10,14 +12,15 @@ import { ReturnStatement } from '@angular/compiler';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent {
+
+  @Output() rbClicked = new EventEmitter<any>();
+  
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Dialog) {}
 
-    private subject = new Subject<string>()
-
-    rbClick(): Observable<string> {
-      this.subject.next('rbClick')
-      return this.subject.asObservable()
+    rbClick() {
+      this.rbClicked.emit('rbClick');
+      this.dialogRef.close()
     }
 }

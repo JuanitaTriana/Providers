@@ -98,14 +98,18 @@ export class AddSubsidiaryComponent implements OnInit {
     this.city = this.subsidiaryDetails[i].city
   }
 
-  openDialog(): void {
+  openDialog(i: number): void {
     const dialogRef = this.dialog.open(DialogComponent, { data: {
       text: this.text,
       leftButton: this.leftButton,
       rightButton: this.rightButton
     }})
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
+
+    dialogRef.componentInstance.rbClicked.subscribe(result => {
+      console.log(result);
+      if (result === 'rbClick'){
+        this.deleteSubsidiary(i)
+      }
     })
   }
 
