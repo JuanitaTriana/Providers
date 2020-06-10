@@ -15,7 +15,11 @@
       </ng-container>
       <ng-container matColumnDef="nic">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> NIT </th>
-        <td mat-cell *matCellDef="let row"> {{row.nic}} </td>
+        <td class="nit" mat-cell *matCellDef="let row"> <div>{{row.nic}} </div>
+          <button (click)='openDialog(row.nic)' class="delete-button" mat-mini-fab color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;">

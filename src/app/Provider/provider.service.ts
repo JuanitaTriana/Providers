@@ -9,7 +9,7 @@ export class ProviderService {
 
   constructor(private service: HttpClient) { }
 
-  readonly url = 'http://localhost:8080/api/v1/company';
+  readonly url = 'http://bf924d06e4ad.ngrok.io/api/v1/company';
 
   getAll(){
     return this.service.get<Provider[]>(this.url);
@@ -19,7 +19,7 @@ export class ProviderService {
     return this.service.post(this.url, provider);
   }
 
-  deleteProvider(nit: number) {
+  deleteProvider(nit: string) {
     return this.service.delete(this.url + '/' + nit);
   }
 
