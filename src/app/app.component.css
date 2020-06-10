@@ -1,3 +1,13 @@
 .view-margin {
   padding-top: var(--navbarh);
 }
+.loader {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #b4b4b44b;
+}

@@ -1,0 +1,26 @@
+.providers-list {
+  padding: 20px;;
+}
+table {
+  width: 100%;
+}
+mat-form-field {
+  padding: 0 15px;
+}
+th {
+  background-color: #673ab7;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+}
+td, th {
+  padding: 0 10px !important;
+}
+.table-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+}
+.pages {
+  width: 80%;
+}
