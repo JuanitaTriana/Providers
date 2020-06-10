@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import {FormControl, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import {FormControl, Validators} from '@angular/forms'
 import { ProviderService } from '../Provider/provider.service'
 import { LoaderService } from '../loader.service'
-import Provider from '../Provider/Provider';
+import Provider from '../Provider/Provider'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-add-provider',
@@ -21,7 +22,9 @@ export class AddProviderComponent implements OnInit {
     phone: null
   }
 
-  constructor(private router: Router, private addProviderService: ProviderService, private loader: LoaderService) { }
+  duration: 5000
+
+  constructor(private router: Router, private addProviderService: ProviderService, private loader: LoaderService, private _snackBar: MatSnackBar) { }
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -41,6 +44,7 @@ export class AddProviderComponent implements OnInit {
       .subscribe(response => {
         this.router.navigate(['/providers-list'])
         this.loader.disableLoader()
+        this._snackBar.open('Proveedor Guardado!', 'OK', {duration: this.duration})
       })
     }
   }
