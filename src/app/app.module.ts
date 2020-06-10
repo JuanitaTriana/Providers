@@ -5,6 +5,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,7 +16,6 @@ import { AddProviderComponent } from './add-provider/add-provider.component';
 import { AddSubsidiaryComponent } from './add-subsidiary/add-subsidiary.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { ProviderService } from './Provider/provider.service';
 import { HttpClientModule } from '@angular/common/http'
 import { MatIconModule } from '@angular/material/icon';
@@ -22,6 +23,8 @@ import { ProvidersListComponent } from './providers-list/providers-list.componen
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
+import { DialogComponent } from './shared/dialog/dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { MatSortModule } from '@angular/material/sort';
     AddSubsidiaryComponent,
     ShoppingCartComponent,
     NavBarComponent,
-    ProvidersListComponent
+    ProvidersListComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
   ],
   providers: [ProviderService],
   bootstrap: [AppComponent]
