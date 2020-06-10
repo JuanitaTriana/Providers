@@ -16,6 +16,14 @@ th {
 td, th {
   padding: 0 10px !important;
 }
+.nit {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  align-items: center;
+}
+.delete-button{
+  margin: 10px;
+}
 .table-footer {
   display: flex;
   justify-content: flex-end;

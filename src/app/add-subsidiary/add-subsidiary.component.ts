@@ -116,6 +116,5 @@ export class AddSubsidiaryComponent implements OnInit {
   deleteSubsidiary(i: number): void {
     this.subsidiaryDetails.splice(i,1)
     this._snackBar.open('Sucursal Eliminada!', 'OK', {duration: this.durationInSeconds})
-
   }
 }
