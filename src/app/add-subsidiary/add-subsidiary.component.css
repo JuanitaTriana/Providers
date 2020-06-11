@@ -74,3 +74,23 @@ h1{
     justify-content: center;
     margin-left: 50px;
 }
+th {
+    background-color: #673ab7;
+    color: white;
+}
+td{
+    text-align: center;
+}
+td.mat-cell{
+    text-align: center;
+  }
+.pages{
+    width: 80%;
+}
+.filter{
+    width: 20%;
+    padding-left: 45px;
+}
+.table-footer{
+    display: flex;
+}
