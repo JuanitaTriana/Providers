@@ -3,8 +3,6 @@ import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { MatDialog } from '@angular/material/dialog'
-import { DialogComponent} from '../shared/dialog/dialog.component'
 import { LoaderService } from '../loader.service';
 import { ProductServiceService } from '../Product-Service/product-service.service';
 import ProductService from '../Product-Service/ProductService';

@@ -10,7 +10,7 @@ export class ProviderService {
 
   constructor(private service: HttpClient) { }
 
-  readonly url = 'http://65c72f416091.ngrok.io/api/v1/company';
+  readonly url = apiUrl + '/api/v1/company';
 
   getAll(){
     return this.service.get<Provider[]>(this.url)

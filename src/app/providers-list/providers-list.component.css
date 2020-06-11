@@ -3,6 +3,8 @@
 }
 table {
   width: 100%;
+  border: 1px solid blueviolet;
+
 }
 mat-form-field {
   padding: 0 15px;
@@ -39,3 +41,4 @@ td, th {
 .pages {
   width: 80%;
 }
+

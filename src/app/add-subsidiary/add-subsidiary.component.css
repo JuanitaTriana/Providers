@@ -1,9 +1,9 @@
 .accordion{
   margin-top: 10px;}
 .add-subsidiary{
-  display: grid;
-  grid-template-columns: 40% 60% ;
-  margin-top: 10pxt;
+    display: grid;
+    grid-template-columns: 30% 70% ;
+    margin-top: 10px;
 }
 .subsidiary-form{
   background-color: rgb(236, 236, 235);
@@ -53,4 +53,44 @@ h1{
 .delete-button{
     margin-top: 10px;
     margin-left: 170px;
+}
+.product-list{
+    padding: 20px;;
+    align-items: center;
+}
+.table{
+    width: 100%;
+}
+.product-form{
+    padding: 20px;
+}
+.prod-rod{
+    width: 600px;
+}
+.add-prod-button{
+    display: flex;
+    width: max-content;
+    align-items: flex-end;
+    justify-content: center;
+    margin-left: 50px;
+}
+th {
+    background-color: #673ab7;
+    color: white;
+}
+td{
+    text-align: center;
+}
+td.mat-cell{
+    text-align: center;
+  }
+.pages{
+    width: 80%;
+}
+.filter{
+    width: 20%;
+    padding-left: 45px;
+}
+.table-footer{
+    display: flex;
 }
