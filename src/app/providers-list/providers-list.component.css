@@ -21,7 +21,14 @@ td, th {
   grid-template-columns: 70% 30%;
   align-items: center;
 }
+.buttons {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
 .delete-button{
+  margin: 10px;
+}
+.add-button{
   margin: 10px;
 }
 .table-footer {

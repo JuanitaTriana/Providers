@@ -16,12 +16,14 @@
       <ng-container matColumnDef="nic">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> NIT </th>
         <td class="nit" mat-cell *matCellDef="let row"> <div>{{row.nic}} </div>
-          <button (click)='openDialog(row.nic)' class="delete-button" mat-mini-fab color="warn">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button (click)='goProvider(row.nic)' class="add-button" mat-mini-fab color="warn">
-            <mat-icon>add</mat-icon>
-          </button>
+          <div class="buttons">
+            <button (click)='goProvider(row.nic)' class="add-button" mat-mini-fab color="primary">
+              <mat-icon>add</mat-icon>
+             </button>
+            <button (click)='openDialog(row.nic)' class="delete-button" mat-mini-fab color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+         </div>  
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
