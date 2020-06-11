@@ -83,7 +83,7 @@ export class AddSubsidiaryComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator
   @ViewChild(MatSort, {static: true}) sort: MatSort
-  
+
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private subService: SubsidiaryService, private loader: LoaderService, private productService: ProductServiceService) {
     this.getSubs()
   }
@@ -149,8 +149,8 @@ export class AddSubsidiaryComponent implements OnInit {
     this.productService.getAll().subscribe(result => {
       console.log(result)
       this.productDetails = result.filter(product => product.branchOfficeCompan.nic === nic)
-      this.productList = result
-      this.dataSource = new MatTableDataSource(result)
+      this.productList = this.productDetails
+      this.dataSource = new MatTableDataSource(this.productDetails)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort
       this.loader.disableLoader()

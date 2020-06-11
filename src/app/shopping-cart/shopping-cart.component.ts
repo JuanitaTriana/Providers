@@ -29,6 +29,7 @@ export class ShoppingCartComponent implements OnInit{
     }
 
     filterByProvider(storageCart: ProductService[]) {
+      this.cartItems = []
       storageCart.forEach(item => {
         this.addToCart({
           subsidiary: item.branchOfficeCompan.name,
