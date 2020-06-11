@@ -1,2 +1,13 @@
-<div></div>
-<p>shopping-cart works!</p>
+<div class="carrito">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let proveedor of arrayCarrito">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ proveedor.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let product of proveedor.products"> {{product.name}}</div>
+        Total: asdasdas
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
