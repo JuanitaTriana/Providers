@@ -45,15 +45,15 @@
             <mat-form-field>
                 <mat-label>Telefóno</mat-label>
                 <span matPrefix>+57 &nbsp;</span>
-                <input type="number" [formControl]="phoneFormControl" [(ngModel)]="provider.phone" name="provider-phone" required matInput placeholder="(8)-515-1787">
+                <input [formControl]="phoneFormControl" [(ngModel)]="provider.phone" name="provider-phone" required matInput placeholder="(8)-515-1787">
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error *ngIf="phoneFormControl.hasError('required')">
-                    El Teléfono es <strong>requerido</strong>
-                  </mat-error>
+                  El Teléfono es <strong>requerido</strong>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="provider-field buttons">
-            <button (click)="addSubsidiary()" class="add-subsidiary" mat-raised-button color="basic"> + Agregar Sucursal</button>
+            <button (click)="saveProvider('addSub')" class="add-subsidiary" mat-raised-button color="basic"> + Agregar Sucursal</button>
             <button  type="submit" class="save-button" mat-raised-button color="primary">Guardar Proveedor</button>
         </div>
     </form>

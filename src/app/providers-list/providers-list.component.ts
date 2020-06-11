@@ -92,4 +92,9 @@ export class ProvidersListComponent implements OnInit {
       this._snackBar.open('No se pudo eliminar el proveedor', 'OK', {duration: this.durationInSeconds})
     })
   }
+
+  goProvider(nic: number) {
+    localStorage.setItem('providerNic', nic.toString())
+    this.router.navigate(['/add-subsidiary'])
+  }
 }
