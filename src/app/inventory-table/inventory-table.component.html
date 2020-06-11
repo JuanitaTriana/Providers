@@ -1,23 +1,43 @@
-<div class="providers-list">
+<div class="products-list">
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre del Producto </th>
           <td mat-cell *matCellDef="let row"> {{row.name}} </td>
         </ng-container>
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-          <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio </th>
+          <td mat-cell *matCellDef="let row"> {{row.value}} </td>
         </ng-container>
-        <ng-container matColumnDef="direction">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </th>
-          <td mat-cell *matCellDef="let row"> {{row.direction}} </td>
+        <ng-container matColumnDef="unitMeasure">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Unidades </th>
+          <td mat-cell *matCellDef="let row"> <div>{{row.unitMeasure}} </div></td>
         </ng-container>
-        <ng-container matColumnDef="nic">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> NIT </th>
-          <td class="nit" mat-cell *matCellDef="let row"> <div>{{row.nic}} </div>
-            <button (click)='openDialog(row.nic)' class="delete-button" mat-mini-fab color="warn">
-              <mat-icon>delete</mat-icon>
+        <ng-container matColumnDef="presentation">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Presentacion </th>
+          <td mat-cell *matCellDef="let row"> {{row.product.presentation}} </td>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </th>
+          <td mat-cell *matCellDef="let row"> {{row.product.quantity}} </td>
+        </ng-container>
+        <ng-container matColumnDef="duration">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Duracion </th>
+          <td mat-cell *matCellDef="let row"> {{row.service.duration}} </td>
+        </ng-container>
+        <ng-container matColumnDef="plan">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Plan </th>
+          <td mat-cell *matCellDef="let row"> {{row.service.plan}} </td>
+        </ng-container>
+        <ng-container matColumnDef="branchOfficeCompan.name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Sucursal </th>
+          <td class="sucursal" mat-cell *matCellDef="let row"> {{row.branchOfficeCompan.name}}
+            <button (click)="addCart()" class="add-button" mat-mini-fab color="primary">
+              <mat-icon>add</mat-icon>
             </button>
           </td>
         </ng-container>
@@ -31,7 +51,6 @@
           <input matInput (keyup)="applyFilter($event)" placeholder="Buscar proveedor">
         </mat-form-field>
         <mat-paginator class="pages" [pageSizeOptions]="[5, 10, 25, 50, 100]"></mat-paginator>
-        <button class="add-btn" (click)="goAdd()" mat-fab color="primary"><mat-icon>person_add</mat-icon></button>
       </div>
     </div>
   </div>

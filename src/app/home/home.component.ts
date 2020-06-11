@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { ProductServiceService } from '../Product-Service/product-service.service'
 import { LoaderService } from '../loader.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,20 +10,13 @@ import { LoaderService } from '../loader.service'
 export class HomeComponent implements OnInit {
   name: string = '';
 
-  constructor(private productService: ProductServiceService,  private loader: LoaderService) { }
+  constructor(private router: Router, private loader: LoaderService) { }
 
   ngOnInit(): void {
   }
 
   search(event): void {
-    this.loader.enableLoader()
-    this.productService.getByName(event.target.value).subscribe(result => {
-      console.log(result)
-      this.loader.disableLoader()
-    },
-    error => {
-      console.log('Error getting products', error)
-      this.loader.disableLoader()
-    })
+    localStorage.setItem('product', event.target.value)
+    this.router.navigate(['/inventory-table'])
   }
 }

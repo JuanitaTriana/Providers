@@ -1,17 +1,21 @@
 export default interface ProductService {
     branchOfficeCompan: {
       nic: number
-    },
-    id: number,
-    name: string,
-    unitMeasure: string,
-    value: number,
+      [key: string]: any
+    }
+    id: number
+    name: string
+    unitMeasure: string
+    value: number
+    isProduct: boolean
     product?: {
-      presentation: string,
+      presentation: string
       quantity: number
-    },
+      [key: string]: any
+    }
     service?: {
-      duration: string,
+      duration: string
       plan: string
+      [key: string]: any
     }
   }
