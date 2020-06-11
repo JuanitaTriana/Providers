@@ -7,7 +7,6 @@ export default interface ProductService {
     name: string
     unitMeasure: string
     value: number
-    isProduct: boolean
     product?: {
       presentation: string
       quantity: number

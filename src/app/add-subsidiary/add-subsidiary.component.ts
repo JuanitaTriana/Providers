@@ -1,10 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import Subsidiary from './Subsidiary';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { FormControl, Validators } from '@angular/forms'
+import Subsidiary from './Subsidiary'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatDialog } from '@angular/material/dialog'
 import { DialogComponent} from '../shared/dialog/dialog.component'
-import { SubsidiaryService } from './subsidiary.service';
+import { SubsidiaryService } from './subsidiary.service'
+import { MatTableDataSource } from '@angular/material/table'
+import { LoaderService } from '../loader.service'
+import { ProductServiceService } from '../Product-Service/product-service.service'
+import ProductService from '../Product-Service/ProductService'
+import { MatPaginator } from '@angular/material/paginator'
+import { MatSort } from '@angular/material/sort'
+
 
 @Component({
   selector: 'app-add-subsidiary',
@@ -38,6 +45,7 @@ export class AddSubsidiaryComponent implements OnInit {
   text = 'Desea Eliminar esta sucursal';
   leftButton = 'Cancelar';
   rightButton = 'Eliminar';
+  actualNic : number = null
   public subsidiaryDetails : Subsidiary[] = [];
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -49,7 +57,34 @@ export class AddSubsidiaryComponent implements OnInit {
   stateFormControl = new FormControl('', [ Validators.required ])
   cityFormControl = new FormControl('', [ Validators.required ])
 
-  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private subService: SubsidiaryService) {
+  product: string
+  productList: ProductService[]
+  emptyProductService: ProductService = {
+    branchOfficeCompan: {
+      nic: null
+    },
+    id: null,
+    name: '',
+    unitMeasure: '',
+    value: null,
+    product: {
+      presentation: '',
+      quantity: null
+    },
+    service: {
+      duration: '',
+      plan: ''
+    }
+  }
+  productData: ProductService = this.emptyProductService
+  public productDetails : ProductService[] = [];
+  displayedColumns: string[] = ['id', 'name', 'value', 'unitMeasure', 'presentation', 'quantity', 'duration', 'plan', 'branchOfficeCompan.name']
+  dataSource: MatTableDataSource<ProductService>
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator
+  @ViewChild(MatSort, {static: true}) sort: MatSort
+  
+  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private subService: SubsidiaryService, private loader: LoaderService, private productService: ProductServiceService) {
     this.getSubs()
   }
 
@@ -107,5 +142,37 @@ export class AddSubsidiaryComponent implements OnInit {
       this.getSubs()
     })
     this._snackBar.open('Sucursal Eliminada!', 'OK', {duration: this.durationInSeconds})
+  }
+
+  getProd(nic: number): void {
+    this.productService.getAll().subscribe(result => {
+      console.log(result)
+      this.productDetails = result.filter(product => product.branchOfficeCompan.nic === nic)
+      this.productList = result
+      this.dataSource = new MatTableDataSource(result)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort
+      this.loader.disableLoader()
+    },
+    error => {
+      console.log('Error getting products', error)
+      this.loader.disableLoader()
+    })
+  }
+
+  addProd() : void {
+    this.productService.addProduct(this.productData).subscribe(result => {
+      this._snackBar.open('Producto Guardado!', 'OK', {duration: this.durationInSeconds})
+      this.getProd(this.actualNic)
+    })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLowerCase()
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage()
+    }
   }
 }

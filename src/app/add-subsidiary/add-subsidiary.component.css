@@ -2,7 +2,7 @@
     margin-top: 10px;}
 .add-subsidiary{
     display: grid;
-    grid-template-columns: 40% 60% ;
+    grid-template-columns: 30% 70% ;
     margin-top: 10pxt;
 }
 .subsidiary-form{
@@ -52,5 +52,15 @@ h1{
 }
 .delete-button{
     margin-top: 10px;
-    margin-left: 170px;
+    margin-left: 130px;
+}
+.product-list{
+    padding: 20px;;
+    align-items: center;
+}
+.table{
+    width: 100%;
+}
+.product-form{
+    padding: 20px;
 }

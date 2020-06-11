@@ -76,11 +76,11 @@
                 </div>
                 <div class="buttons">
                     <button  type="submit" class="save-subsidiary" mat-raised-button color="basic">Guardar</button>
-                    <button  class="add-products" mat-raised-button color="primary">Agregar Productos</button>
+                    <button  (click)="actualNic=subsidiary.nic" class="add-products" mat-raised-button color="primary">Agregar Productos</button>
                 </div>
         </form>
         </mat-expansion-panel>
-        <mat-expansion-panel *ngFor="let sub of subsidiaryDetails; index as i"  (opened)="panelOpenState = true"
+        <mat-expansion-panel *ngFor="let sub of subsidiaryDetails; index as i"  (opened)="getProd(sub.nic)"
                             (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
             <mat-panel-title>
@@ -101,7 +101,107 @@
             </div>
         </mat-expansion-panel>
     </mat-accordion>
-    <div class="add-products">
-        <div>hola</div>
+    <div class="product-list">
+        <div class="mat-elevation-z8">
+          <table class="table" mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+              <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre del Producto </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="value">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio </th>
+              <td mat-cell *matCellDef="let row"> {{row.value}} </td>
+            </ng-container>
+            <ng-container matColumnDef="unitMeasure">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Unidades </th>
+              <td mat-cell *matCellDef="let row"> <div>{{row.unitMeasure}} </div></td>
+            </ng-container>
+            <ng-container matColumnDef="presentation">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Presentacion </th>
+              <td mat-cell *matCellDef="let row"> {{row.product.presentation}} </td>
+            </ng-container>
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </th>
+              <td mat-cell *matCellDef="let row"> {{row.product.quantity}} </td>
+            </ng-container>
+            <ng-container matColumnDef="duration">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Duracion </th>
+              <td mat-cell *matCellDef="let row"> {{row.service.duration}} </td>
+            </ng-container>
+            <ng-container matColumnDef="plan">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Plan </th>
+              <td mat-cell *matCellDef="let row"> {{row.service.plan}} </td>
+            </ng-container>
+            <ng-container matColumnDef="branchOfficeCompan.name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Sucursal </th>
+              <td class="sucursal" mat-cell *matCellDef="let row"> {{row.branchOfficeCompan.name}}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+          </table>
+          <div class="product-form">
+            <h2>Agregar Producto</h2>
+            <table class="product-form" cellspacing="0"><tr>
+                <td><mat-form-field class="form-two">
+                  <mat-label>ID</mat-label>
+                  <input matInput [(ngModel)]="productData.id" name="productData-id">
+                </mat-form-field></td>
+                <td><mat-form-field class="formt-two">
+                  <mat-label>Nombre del Producto</mat-label>
+                  <input matInput [(ngModel)]="productData.name" name="productData-name">
+                </mat-form-field></td>
+                <td><mat-form-field class="formt-two">
+                    <mat-label>Precio</mat-label>
+                    <input matInput [(ngModel)]="productData.value" name="productData-value">
+                </mat-form-field></td>
+              </tr></table>
+              <table class="product-form" cellspacing="0">
+                  <tr>
+                    <td><mat-form-field class="formt-two">
+                        <mat-label>Unidades</mat-label>
+                        <input matInput [(ngModel)]="productData.unitMeasure" name="productData-unitMeasure">
+                    </mat-form-field></td>
+                    <td><mat-form-field class="formt-two">
+                        <mat-label>Presentacion</mat-label>
+                        <input matInput [(ngModel)]="productData.product.presentation" name="productData-product-presentation">
+                    </mat-form-field></td>
+                    <td><mat-form-field class="formt-two">
+                        <mat-label>Cantidad</mat-label>
+                        <input matInput [(ngModel)]="productData.product.quantity" name="productData-product-quantity">
+                    </mat-form-field></td>
+                  </tr>
+              </table>
+              <table class="product-form" cellspacing="0">
+                  <tr>
+                    <td><mat-form-field class="formt-two">
+                        <mat-label>Duracion</mat-label>
+                        <input matInput [(ngModel)]="productData.service.duration" name="productData-service-duration">
+                    </mat-form-field></td>
+                    <td><mat-form-field class="formt-two">
+                        <mat-label>Plan</mat-label>
+                        <input matInput [(ngModel)]="productData.service.plan" name="productData-service-plan">
+                    </mat-form-field></td>
+                    <td><mat-form-field class="formt-two">
+                        <mat-label>Sucursal</mat-label>
+                        <input matInput [(ngModel)]="productData.branchOfficeCompan.name" name="productData-branchOfficeCompan-name">
+                    </mat-form-field></td>
+                  </tr>
+              </table>
+              <button (click)="addProd()" mat-raised-button color="primary">Agregar</button>
+            
+        </div>
+          <div class="table-footer">
+            <mat-form-field>
+              <mat-label>Filtrar</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Buscar proveedor">
+            </mat-form-field>
+            <mat-paginator class="pages" [pageSizeOptions]="[5, 10, 25, 50, 100]"></mat-paginator>
+          </div>
+        </div>
     </div>
-</div>
+</div>    
