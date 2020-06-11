@@ -59,31 +59,32 @@ export class AddSubsidiaryComponent implements OnInit {
   }
 
   getSubs(): void {
-    this.subService.getAll().subscribe(result => this.subsidiaryDetails = result)
+    this.subService.getAll().subscribe(result => {
+      this.subsidiaryDetails = result.filter(subsidiary => subsidiary.companyId.nic === this.providerNic)
+    })
   }
 
   saveSubsidiary(): void {
     if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.phoneFormControl.valid && this.stateFormControl.valid && this.cityFormControl.valid){
       if (this.action === 'edit'){
-        let toEdit: Subsidiary = this.subsidiaryDetails[this.toEdit]
+        let toEdit: Subsidiary = this.subsidiaryDetails.find(sub => sub.nic === this.toEdit)
         toEdit = this.subsidiary
-      } else{
-        this.subService.addSubsidiary(this.subsidiary).subscribe(result => {
-          this._snackBar.open('Sucursal Guardada!', 'OK', {duration: this.durationInSeconds})
-          this.getSubs()
-        })
       }
+      this.subService.addSubsidiary(this.subsidiary).subscribe(result => {
+        this._snackBar.open('Sucursal Guardada!', 'OK', {duration: this.durationInSeconds})
+        this.getSubs()
+      })
       this.subsidiary = this.emptySubsidiary
       this.action = 'save'
       this.isFormOpen = false
     }
   }
 
-  editSubsidiary(i: number): void{
+  editSubsidiary(nic: number): void{
     this.action = 'edit'
+    this.toEdit = nic
+    this.subsidiary = this.subsidiaryDetails.find(sub => sub.nic === nic)
     this.isFormOpen = true
-    this.toEdit = i
-    this.subsidiary = this.subsidiaryDetails[i]
   }
 
   openDialog(i: number): void {
@@ -101,8 +102,10 @@ export class AddSubsidiaryComponent implements OnInit {
     })
   }
 
-  deleteSubsidiary(i: number): void {
-    this.subsidiaryDetails.splice(i, 1)
+  deleteSubsidiary(nic: number): void {
+    this.subService.deleteSubsidiary(nic).subscribe(result => {
+      this.getSubs()
+    })
     this._snackBar.open('Sucursal Eliminada!', 'OK', {duration: this.durationInSeconds})
   }
 }

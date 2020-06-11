@@ -20,8 +20,8 @@ export class SubsidiaryService {
     return this.service.post(this.url, subsidiary)
   }
 
-  deleteSubsidiary(name: string) {
-    return this.service.delete(this.url + '/' + name)
+  deleteSubsidiary(nic: number) {
+    return this.service.delete(this.url + '/' + nic)
   }
 
   updateSubsidiary(subsidiary: Subsidiary){

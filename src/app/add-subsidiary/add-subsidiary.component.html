@@ -1,7 +1,7 @@
 <div class="add-subsidiary">
     <mat-accordion class="accordion" >
-        <mat-expansion-panel [expanded]="isFormOpen" (opened)="panelOpenState = true"
-                            (closed)="panelOpenState = false">
+        <mat-expansion-panel [expanded]="isFormOpen" (opened)="isFormOpen = true"
+                            (closed)="isFormOpen = false">
             <mat-expansion-panel-header>
             <mat-panel-title>
                 <h1>Agregar una Sucursal</h1>
@@ -92,9 +92,10 @@
             <div>Teléfono: {{sub.phone}}</div>
             <div>Departamento: {{sub.city.departament.name}}</div>
             <div>Ciudad: {{sub.city.name}}</div>
+            <div>NIT: {{sub.nic}}</div>
             <div class="details-buttons">
-                <button (click)="editSubsidiary(i)" class="edit-button"mat-raised-button color="primary">Editar</button>
-                <button (click)="openDialog(i)" class="delete-button" mat-mini-fab color="warn" >
+                <button (click)="editSubsidiary(sub.nic)" class="edit-button"mat-raised-button color="primary">Editar</button>
+                <button (click)="openDialog(sub.nic)" class="delete-button" mat-mini-fab color="warn" >
                     <mat-icon>delete</mat-icon>
                 </button>
             </div>
