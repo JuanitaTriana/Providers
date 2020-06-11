@@ -49,25 +49,33 @@ export class AddSubsidiaryComponent implements OnInit {
   stateFormControl = new FormControl('', [ Validators.required ])
   cityFormControl = new FormControl('', [ Validators.required ])
 
-  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private subService: SubsidiaryService) { }
+  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private subService: SubsidiaryService) {
+    this.getSubs()
+  }
 
   ngOnInit(): void {
     this.providerNic = parseInt(localStorage.getItem('providerNic'))
     this.subsidiary.companyId.nic = this.providerNic
   }
+
+  getSubs(): void {
+    this.subService.getAll().subscribe(result => this.subsidiaryDetails = result)
+  }
+
   saveSubsidiary(): void {
     if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.phoneFormControl.valid && this.stateFormControl.valid && this.cityFormControl.valid){
       if (this.action === 'edit'){
         let toEdit: Subsidiary = this.subsidiaryDetails[this.toEdit]
         toEdit = this.subsidiary
       } else{
-        this.subService.addSubsidiary(this.subsidiary).subscribe(result => console.log(result))
-        this.subsidiaryDetails.push(this.subsidiary)
+        this.subService.addSubsidiary(this.subsidiary).subscribe(result => {
+          this._snackBar.open('Sucursal Guardada!', 'OK', {duration: this.durationInSeconds})
+          this.getSubs()
+        })
       }
       this.subsidiary = this.emptySubsidiary
       this.action = 'save'
       this.isFormOpen = false
-      this._snackBar.open('Sucursal Guardada!', 'OK', {duration: this.durationInSeconds})
     }
   }
 

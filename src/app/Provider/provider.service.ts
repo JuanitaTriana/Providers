@@ -17,6 +17,7 @@ export class ProviderService {
   }
 
   addProvider(provider: Provider){
+    console.log(provider)
     return this.service.post(this.url, provider)
   }
 

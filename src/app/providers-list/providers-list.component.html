@@ -19,6 +19,9 @@
           <button (click)='openDialog(row.nic)' class="delete-button" mat-mini-fab color="warn">
             <mat-icon>delete</mat-icon>
           </button>
+          <button (click)='goProvider(row.nic)' class="add-button" mat-mini-fab color="warn">
+            <mat-icon>add</mat-icon>
+          </button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
