@@ -37,21 +37,19 @@ export class AddProviderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  saveProvider(): void {
+  saveProvider(action?: string): void {
     if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.nitFormControl.valid && this.phoneFormControl.valid){
       this.loader.enableLoader()
       this.addProviderService.addProvider(this.provider)
       .subscribe(response => {
-        this.router.navigate(['/providers-list'])
+        if (action === 'addSub') {
+          localStorage.setItem('providerNic', this.provider.nic.toString())
+          this.router.navigate(['/add-subsidiary'])
+        }
+        else this.router.navigate(['/providers-list'])
         this.loader.disableLoader()
         this._snackBar.open('Proveedor Guardado!', 'OK', {duration: this.duration})
       })
     }
   }
-  addSubsidiary(): void{
-    if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.nitFormControl.valid && this.phoneFormControl.valid){
-      this.router.navigate(['/add-subsidiary'])
-    }
-  }
-
 }

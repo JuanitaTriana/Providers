@@ -2,7 +2,7 @@ export default  interface Subsidiary {
   name: string;
   email: string;
   direction: string;
-  phone: number;
+  phone: string;
   nic: number;
   city: {
     name: string;

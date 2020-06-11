@@ -6,16 +6,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent} from '../shared/dialog/dialog.component'
 import { SubsidiaryService } from './subsidiary.service';
 
-
-
 @Component({
   selector: 'app-add-subsidiary',
   templateUrl: './add-subsidiary.component.html',
   styleUrls: ['./add-subsidiary.component.css']
 })
 export class AddSubsidiaryComponent implements OnInit {
-  isFormOpen = true;
-  panelOpenState = true;
+  isFormOpen: boolean = true;
+  panelOpenState: boolean = true;
+  providerNic: number = null;
   emptySubsidiary: Subsidiary = {
     name: '',
     email: '',
@@ -53,6 +52,8 @@ export class AddSubsidiaryComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private subService: SubsidiaryService) { }
 
   ngOnInit(): void {
+    this.providerNic = parseInt(localStorage.getItem('providerNic'))
+    this.subsidiary.companyId.nic = this.providerNic
   }
   saveSubsidiary(): void {
     if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.phoneFormControl.valid && this.stateFormControl.valid && this.cityFormControl.valid){
@@ -93,7 +94,7 @@ export class AddSubsidiaryComponent implements OnInit {
   }
 
   deleteSubsidiary(i: number): void {
-    this.subsidiaryDetails.splice(i,1)
+    this.subsidiaryDetails.splice(i, 1)
     this._snackBar.open('Sucursal Eliminada!', 'OK', {duration: this.durationInSeconds})
   }
 }
