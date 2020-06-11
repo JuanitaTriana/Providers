@@ -12,8 +12,16 @@ export class ProductServiceService {
 
   readonly url = apiUrl + '/api/v1/productservice';
 
+  getAll(){
+    return this.service.get<ProductService[]>(this.url)
+  }
+
   getByName(name: string){
     return this.service.get<ProductService[]>(this.url + '/' + name)
+  }
+
+  addProduct(product: ProductService){
+    return this.service.post<ProductService[]>(this.url, product)
   }
   
 }
