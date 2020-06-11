@@ -36,7 +36,7 @@
         <ng-container matColumnDef="branchOfficeCompan.name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Sucursal </th>
           <td class="sucursal" mat-cell *matCellDef="let row"> {{row.branchOfficeCompan.name}}
-            <button (click)="addCart()" class="add-button" mat-mini-fab color="primary">
+            <button (click)="addCart(row.id)" class="add-button" mat-mini-fab color="primary">
               <mat-icon>add</mat-icon>
             </button>
           </td>
@@ -54,4 +54,3 @@
       </div>
     </div>
   </div>
-  

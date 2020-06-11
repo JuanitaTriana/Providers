@@ -8,6 +8,7 @@ import { DialogComponent} from '../shared/dialog/dialog.component'
 import { LoaderService } from '../loader.service';
 import { ProductServiceService } from '../Product-Service/product-service.service';
 import ProductService from '../Product-Service/ProductService';
+import { CartService } from '../shopping-cart/cart.service';
 
 @Component({
   selector: 'app-inventory-table',
@@ -24,7 +25,7 @@ export class InventoryTableComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator
   @ViewChild(MatSort, {static: true}) sort: MatSort
 
-  constructor(private loader: LoaderService, private productService: ProductServiceService, private _snackBar: MatSnackBar) { }
+  constructor(private loader: LoaderService, private productService: ProductServiceService, private _snackBar: MatSnackBar, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.search()
@@ -56,7 +57,9 @@ export class InventoryTableComponent implements OnInit {
     })
   }
 
-  addCart(): void {
+  addCart(id: number): void {
+    const product = this.productList.find(product => product.id === id)
+    this.cartService.addToCart(product)
     this._snackBar.open('Añadido al Carrito!', 'OK', {duration: this.duration})
   }
 

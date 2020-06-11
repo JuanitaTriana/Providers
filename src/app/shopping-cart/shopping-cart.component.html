@@ -1,13 +1,13 @@
 <div class="carrito">
     <mat-accordion>
-      <mat-expansion-panel *ngFor="let proveedor of arrayCarrito">
+      <mat-expansion-panel *ngFor="let proveedor of cartItems">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{ proveedor.name }}
+            {{ proveedor.subsidiary }}
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div *ngFor="let product of proveedor.products"> {{product.name}}</div>
-        Total: asdasdas
+        Total: {{getTotal(proveedor.subsidiary)}}
       </mat-expansion-panel>
     </mat-accordion>
   </div>

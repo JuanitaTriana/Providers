@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import { ProductServiceService } from '../Product-Service/product-service.service';
+import CartItem from './CartItem';
+import { CartService } from './cart.service';
+import ProductService from '../Product-Service/ProductService';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,50 +11,50 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit{
   panelOpenState = false;
+  input: CartItem;
+  cartItems: CartItem[] = [];
+  storageCart: ProductService[]
 
-    entrada = {
-      name: 'Proveedor D', 
-      products: [{name: 'product4', serial: '123'}]
+    constructor(private cartService: CartService) {
+      this.cartService.cartChange().subscribe(result =>{
+        console.log(result)
+        this.storageCart = JSON.parse(localStorage.getItem('cartItems'))
+        console.log(this.storageCart)
+        this.filterByProvider(this.storageCart)
+      })
     }
-
-  arrayCarrito = [
-    {
-      name: 'Proveedor C', 
-      products: [
-        {name: 'product1', serial: '123'},
-        {name: 'product2', serial: '1123'},
-        {name: 'product3', serial: '1123'}
-      ]
-    },
-    {
-      name: 'Proveedor B', 
-      products: [
-        {name: 'product1', serial: '123'},
-        {name: 'product2', serial: '1123'}
-      ]
-    }];
 
     ngOnInit(){
-      this.addToCart(this.entrada)
+
     }
 
-    addToCart(entrada){
-      console.log(entrada)
-      const found = this.arrayCarrito.find(element => element.name === entrada.name);
+    filterByProvider(storageCart: ProductService[]) {
+      storageCart.forEach(item => {
+        this.addToCart({
+          subsidiary: item.branchOfficeCompan.name,
+          products: [item]
+        })
+      })
+    }
+
+    addToCart(input: CartItem){
+      const found = this.cartItems.find(element => element.subsidiary === input.subsidiary);
       console.log(found);
-
       if (found != undefined){
-        entrada.products.forEach(product => {
+        input.products.forEach(product => {
           found.products.push(product)
-          
-        });
-        
+        })
       }else{
-        this.arrayCarrito.push(entrada)
-
+        this.cartItems.push(input)
       }
+      console.log(this.cartItems)
+    }
 
-      console.log(this.arrayCarrito)
+    getTotal(subsidiary: string): number {
+      let total: number = 0
+      const {products} = this.cartItems.find(item => item.subsidiary === subsidiary)
+      products.forEach(product => total += product.value)
+      return total
     }
 
 }
