@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import {FormControl, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import {FormControl, Validators} from '@angular/forms'
+import { ProviderService } from '../Provider/provider.service'
+import { LoaderService } from '../loader.service'
+import Provider from '../Provider/Provider'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-add-provider',
@@ -9,47 +13,43 @@ import {FormControl, Validators} from '@angular/forms';
 })
 
 export class AddProviderComponent implements OnInit {
-  public name: string;
-  public email: string;
-  public address: string;
-  public addre: string;
-  public nit: string;
-  public phone: string;
+
+  public provider: Provider = {
+    name: '',
+    email: '',
+    direction: '',
+    nic: null,
+    phone: null
+  }
+
+  duration: 5000
+
+  constructor(private router: Router, private addProviderService: ProviderService, private loader: LoaderService, private _snackBar: MatSnackBar) { }
 
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-
-  nameFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-  addressFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-  nitFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-  phoneFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-  constructor(private router: Router) { }
+  nameFormControl = new FormControl('', [Validators.required]);
+  addressFormControl = new FormControl('', [Validators.required]);
+  nitFormControl = new FormControl('', [Validators.required]);
+  phoneFormControl = new FormControl('', [Validators.required]);
 
   ngOnInit(): void {
   }
-  saveProvider(): void {
+  saveProvider(action?: string): void {
     if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.nitFormControl.valid && this.phoneFormControl.valid){
-      alert('Proveedor Guardado'+'\n'+ 'provider info: '+'\n'+this.name +'\n'+ this.email + this.address + '\n'+ this.addre +'\n'+this.nit+'\n'+this.phone) 
+      this.loader.enableLoader()
+      this.addProviderService.addProvider(this.provider)
+      .subscribe(response => {
+        if (action === 'addSub') {
+          localStorage.setItem('providerNic', this.provider.nic.toString())
+          this.router.navigate(['/add-subsidiary'])
+        }
+        else this.router.navigate(['/providers-list'])
+        this.loader.disableLoader()
+        this._snackBar.open('Proveedor Guardado!', 'OK', {duration: this.duration})
+      })
     }
   }
-  addSubsidiary(): void{
-    if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.nitFormControl.valid && this.phoneFormControl.valid){
-      this.router.navigate(['/add-subsidiary'])
-    }
-  }
-
 }

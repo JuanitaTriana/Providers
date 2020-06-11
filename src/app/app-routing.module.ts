@@ -4,7 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { AddProviderComponent } from './add-provider/add-provider.component';
 import { AddSubsidiaryComponent } from './add-subsidiary/add-subsidiary.component';
 import { ProvidersListComponent } from './providers-list/providers-list.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { InventoryTableComponent } from './inventory-table/inventory-table.component';
+
 
 const routes: Routes = [
   {
@@ -24,8 +25,8 @@ const routes: Routes = [
     component: ProvidersListComponent
   },
   {
-    path: 'shopping-cart',
-    component: ShoppingCartComponent
+    path: 'inventory-table',
+    component: InventoryTableComponent
   }
 ];
 

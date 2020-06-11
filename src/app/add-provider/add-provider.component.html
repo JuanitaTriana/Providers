@@ -1,10 +1,10 @@
 <div class="providers">
-    <form class="provider-form" (submit)="saveProvider()">
+    <form class="provider-form" (ngSubmit)="saveProvider()">
         <h1>Agregar un Proveedor</h1>
         <div class="provider-field">
             <mat-form-field>
                 <mat-label>Nombre</mat-label>
-                <input [formControl]="nameFormControl" matInput [(ngModel)]="name" name="provider-name" required type="text" placeholder="Avianca">
+                <input [formControl]="nameFormControl" matInput [(ngModel)]="provider.name" name="provider-name" required type="text" placeholder="Avianca">
                   <mat-error *ngIf="nameFormControl.hasError('required')">
                     Nombre es <strong>requerido</strong>
                   </mat-error>
@@ -13,7 +13,7 @@
         <div class="provider-field">
             <mat-form-field>
                 <mat-label>Correo</mat-label>
-                <input matInput [formControl]="emailFormControl" [(ngModel)]="email" name="provider-mail" required placeholder="avianca@gmail.com">
+                <input matInput [formControl]="emailFormControl" [(ngModel)]="provider.email" name="provider-mail" required placeholder="avianca@gmail.com">
                 <mat-icon matSuffix>email</mat-icon>
                 <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                     Por favor ingrese una dirección de correo válida
@@ -26,7 +26,7 @@
         <div class="provider-field">
             <mat-form-field>
                 <mat-label>Dirección</mat-label>
-                <input matInput [formControl]="addressFormControl" [(ngModel)]="address" name="provider-address" required placeholder="Cra 5 #20-55">
+                <input matInput [formControl]="addressFormControl" [(ngModel)]="provider.direction" name="provider-address" required placeholder="Cra 5 #20-55">
                 <mat-error *ngIf="addressFormControl.hasError('required')">
                     La Dirección es <strong>requerida</strong>
                   </mat-error>
@@ -34,14 +34,8 @@
         </div>
         <div class="provider-field">
             <mat-form-field>
-                <mat-label>Dirección 2</mat-label>
-                <input matInput [(ngModel)]="addre" name="provider-address2" placeholder="Edif. Uno Oficina 701">
-            </mat-form-field>
-        </div>
-        <div class="provider-field">
-            <mat-form-field>
                 <mat-label>NIT</mat-label>
-                <input type="number" [formControl]="nitFormControl" [(ngModel)]="nit" name="provider-nit" required matInput placeholder="12345-6">
+                <input type="number" [formControl]="nitFormControl" [(ngModel)]="provider.nic" name="provider-nit" required matInput placeholder="12345-6">
                 <mat-error *ngIf="nitFormControl.hasError('required')">
                     El NIT es <strong>requerido</strong>
                   </mat-error>
@@ -51,15 +45,15 @@
             <mat-form-field>
                 <mat-label>Telefóno</mat-label>
                 <span matPrefix>+57 &nbsp;</span>
-                <input type="number" [formControl]="phoneFormControl" [(ngModel)]="phone" name="provider-phone" required matInput placeholder="(8)-515-1787">
+                <input [formControl]="phoneFormControl" [(ngModel)]="provider.phone" name="provider-phone" required matInput placeholder="(8)-515-1787">
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error *ngIf="phoneFormControl.hasError('required')">
-                    El Teléfono es <strong>requerido</strong>
-                  </mat-error>
+                  El Teléfono es <strong>requerido</strong>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="provider-field buttons">
-            <button (click)="addSubsidiary()" class="add-subsidiary" mat-raised-button color="basic"> + Agregar Sucursal</button>
+            <button (click)="saveProvider('addSub')" class="add-subsidiary" mat-raised-button color="basic"> + Agregar Sucursal</button>
             <button  type="submit" class="save-button" mat-raised-button color="primary">Guardar Proveedor</button>
         </div>
     </form>

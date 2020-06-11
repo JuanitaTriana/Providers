@@ -1,7 +1,7 @@
 <div class="add-subsidiary">
     <mat-accordion class="accordion" >
-        <mat-expansion-panel [expanded]="isFormOpen" (opened)="panelOpenState = true"
-                            (closed)="panelOpenState = false">
+        <mat-expansion-panel [expanded]="isFormOpen" (opened)="isFormOpen = true"
+                            (closed)="isFormOpen = false">
             <mat-expansion-panel-header>
             <mat-panel-title>
                 <h1>Agregar una Sucursal</h1>
@@ -11,7 +11,7 @@
                 <div class="subsidiary-field">
                     <mat-form-field>
                         <mat-label>Nombre</mat-label>
-                        <input [formControl]="nameFormControl" matInput [(ngModel)]="name" name="subsidiary-name" required type="text" placeholder="Avianca Ibague">
+                        <input [formControl]="nameFormControl" matInput [(ngModel)]="subsidiary.name" name="subsidiary-name" required type="text" placeholder="Avianca Ibague">
                           <mat-error *ngIf="nameFormControl.hasError('required')">
                             Nombre es <strong>requerido</strong>
                           </mat-error>
@@ -20,7 +20,7 @@
                 <div class="subsidiary-field">
                     <mat-form-field>
                         <mat-label>Correo</mat-label>
-                        <input matInput [formControl]="emailFormControl" [(ngModel)]="email" name="subsidiary-mail" required placeholder="avianca@gmail.com">
+                        <input matInput [formControl]="emailFormControl" [(ngModel)]="subsidiary.email" name="subsidiary-mail" required placeholder="avianca@gmail.com">
                         <mat-icon matSuffix>email</mat-icon>
                         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                             Por favor ingrese una dirección de correo válida
@@ -33,7 +33,7 @@
                 <div class="subsidiary-field">
                     <mat-form-field>
                         <mat-label>Dirección</mat-label>
-                        <input matInput [formControl]="addressFormControl" [(ngModel)]="address" name="subsidiary-address" required placeholder="Cra 5 #20-55">
+                        <input matInput [formControl]="addressFormControl" [(ngModel)]="subsidiary.direction" name="subsidiary-address" required placeholder="Cra 5 #20-55">
                         <mat-error *ngIf="addressFormControl.hasError('required')">
                             La Dirección es <strong>requerida</strong>
                           </mat-error>
@@ -41,15 +41,15 @@
                 </div>
                 <div class="subsidiary-field">
                     <mat-form-field>
-                        <mat-label>Dirección 2</mat-label>
-                        <input matInput [(ngModel)]="addre" name="subsidiary-address2" placeholder="Edif. Uno Oficina 701">
-                    </mat-form-field>
+                      <mat-label>NIT</mat-label>
+                      <input type="number" matInput [(ngModel)]="subsidiary.nic" name="subsidiary-address2" placeholder="1234">
+                  </mat-form-field>
                 </div>
                 <div class="subsidiary-field">
-                    <mat-form-field>
+                  <mat-form-field>
                         <mat-label>Telefóno</mat-label>
                         <span matPrefix>+57 &nbsp;</span>
-                        <input type="number" [formControl]="phoneFormControl" [(ngModel)]="phone" name="subsidiary-phone" required matInput placeholder="(8)-515-1787">
+                        <input type="number" [formControl]="phoneFormControl" [(ngModel)]="subsidiary.phone" name="subsidiary-phone" required matInput placeholder="(8)-515-1787">
                         <mat-icon matSuffix>phone</mat-icon>
                         <mat-error *ngIf="phoneFormControl.hasError('required')">
                             El Teléfono es <strong>requerido</strong>
@@ -59,7 +59,7 @@
                 <div class="subsidiary-field">
                     <mat-form-field>
                         <mat-label>Departamento</mat-label>
-                        <input type="text" [formControl]="stateFormControl" [(ngModel)]="state" name="subsidiary-state" required matInput placeholder="Tolima">
+                        <input type="text" [formControl]="stateFormControl" [(ngModel)]="subsidiary.city.departament.name" name="subsidiary-state" required matInput placeholder="Tolima">
                         <mat-error *ngIf="phoneFormControl.hasError('required')">
                             El Departamento es <strong>requerido</strong>
                           </mat-error>
@@ -68,7 +68,7 @@
                 <div class="subsidiary-field">
                     <mat-form-field>
                         <mat-label>Ciudad</mat-label>
-                        <input type="text" [formControl]="cityFormControl" [(ngModel)]="city" name="subsidiary-city" required matInput placeholder="Ibague">
+                        <input type="text" [formControl]="cityFormControl" [(ngModel)]="subsidiary.city.name" name="subsidiary-city" required matInput placeholder="Ibague">
                         <mat-error *ngIf="phoneFormControl.hasError('required')">
                             La Ciudad es <strong>requerida</strong>
                           </mat-error>
@@ -88,14 +88,14 @@
             </mat-panel-title>
             </mat-expansion-panel-header>
             <div>Email: {{sub.email}}</div>
-            <div>Dirección 1: {{sub.address}}</div>
-            <div>Dirección 2: {{sub.addre}}</div>
+            <div>Dirección 1: {{sub.direction}}</div>
             <div>Teléfono: {{sub.phone}}</div>
-            <div>Departamento: {{sub.state}}</div>
-            <div>Ciudad: {{sub.city}}</div>
+            <div>Departamento: {{sub.city.departament.name}}</div>
+            <div>Ciudad: {{sub.city.name}}</div>
+            <div>NIT: {{sub.nic}}</div>
             <div class="details-buttons">
-                <button (click)="editSubsidiary(i)" class="edit-button"mat-raised-button color="primary">Editar</button>
-                <button (click)="deleteSubsidiary(i)" class="delete-button" mat-mini-fab color="warn" >
+                <button (click)="editSubsidiary(sub.nic)" class="edit-button"mat-raised-button color="primary">Editar</button>
+                <button (click)="openDialog(sub.nic)" class="delete-button" mat-mini-fab color="warn" >
                     <mat-icon>delete</mat-icon>
                 </button>
             </div>
