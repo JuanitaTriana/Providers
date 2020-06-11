@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { LoaderService } from '../loader.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   name: string = '';
 
-  constructor() { }
+  constructor(private router: Router, private loader: LoaderService) { }
 
   ngOnInit(): void {
   }
 
   search(event): void {
-    alert('Enter Selected! '+ event.target.value)
+    localStorage.setItem('product', event.target.value)
+    this.router.navigate(['/inventory-table'])
   }
-
 }

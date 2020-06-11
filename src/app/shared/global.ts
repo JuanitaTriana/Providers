@@ -1,2 +1,2 @@
-// export const apiUrl =  'http://bf924d06e4ad.ngrok.io/'
-export const apiUrl =  'http://localhost:8080/'
+export const apiUrl =  'http://65c72f416091.ngrok.io/'
+// export const apiUrl =  'http://localhost:8080/'

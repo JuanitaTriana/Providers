@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { AddProviderComponent } from './add-provider/add-provider.component';
 import { AddSubsidiaryComponent } from './add-subsidiary/add-subsidiary.component';
 import { ProvidersListComponent } from './providers-list/providers-list.component';
+import { InventoryTableComponent } from './inventory-table/inventory-table.component';
+
 
 const routes: Routes = [
   {
@@ -21,6 +23,10 @@ const routes: Routes = [
   {
     path: 'providers-list',
     component: ProvidersListComponent
+  },
+  {
+    path: 'inventory-table',
+    component: InventoryTableComponent
   }
 ];
 
