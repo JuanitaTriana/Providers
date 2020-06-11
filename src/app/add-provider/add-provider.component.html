@@ -53,8 +53,8 @@
             </mat-form-field>
         </div>
         <div class="provider-field buttons">
-            <button (click)="saveProvider('addSub')" class="add-subsidiary" mat-raised-button color="basic"> + Agregar Sucursal</button>
-            <button  type="submit" class="save-button" mat-raised-button color="primary">Guardar Proveedor</button>
+            <button (click)="saveProvider(goToSub); $event.preventDefault()" class="add-subsidiary" mat-raised-button color="basic"> + Agregar Sucursal</button>
+            <button type="submit" class="save-button" mat-raised-button color="primary">Guardar Proveedor</button>
         </div>
     </form>
 </div>
