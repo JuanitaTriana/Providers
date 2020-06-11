@@ -4,6 +4,7 @@ import Subsidiary from './Subsidiary';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent} from '../shared/dialog/dialog.component'
+import { SubsidiaryService } from './subsidiary.service';
 
 
 
@@ -15,13 +16,23 @@ import { DialogComponent} from '../shared/dialog/dialog.component'
 export class AddSubsidiaryComponent implements OnInit {
   isFormOpen = true;
   panelOpenState = true;
-  public name: string;
-  public email: string;
-  public address: string;
-  public addre: string;
-  public phone: string;
-  public state: string;
-  public city: string;
+  emptySubsidiary: Subsidiary = {
+    name: '',
+    email: '',
+    direction: '',
+    phone: null,
+    nic: null,
+    city: {
+      name: '',
+      departament: {
+        name: ''
+      }
+    },
+    companyId: {
+      nic: null
+    }
+  }
+  subsidiary: Subsidiary = this.emptySubsidiary
   action: string;
   toEdit: number;
   durationInSeconds = 5000;
@@ -29,56 +40,30 @@ export class AddSubsidiaryComponent implements OnInit {
   leftButton = 'Cancelar';
   rightButton = 'Eliminar';
   public subsidiaryDetails : Subsidiary[] = [];
-
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
+  nameFormControl = new FormControl('', [ Validators.required ])
+  addressFormControl = new FormControl('', [ Validators.required ])
+  phoneFormControl = new FormControl('', [ Validators.required ])
+  stateFormControl = new FormControl('', [ Validators.required ])
+  cityFormControl = new FormControl('', [ Validators.required ])
 
-  nameFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-  addressFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-  phoneFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-  stateFormControl = new FormControl('', [
-    Validators.required,
-  ])
-  cityFormControl = new FormControl('', [
-    Validators.required,
-  ])
-
-  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) { }
+  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private subService: SubsidiaryService) { }
 
   ngOnInit(): void {
   }
   saveSubsidiary(): void {
     if (this.nameFormControl.valid && this.emailFormControl.valid && this.addressFormControl.valid && this.phoneFormControl.valid && this.stateFormControl.valid && this.cityFormControl.valid){
       if (this.action === 'edit'){
-        const toEdit = this.subsidiaryDetails[this.toEdit]
-        toEdit.name = this.name
-        toEdit.email = this.email
-        toEdit.address = this.address
-        toEdit.addre = this.addre
-        toEdit.phone = this.phone
-        toEdit.state = this.state
-        toEdit.city = this.city
+        let toEdit: Subsidiary = this.subsidiaryDetails[this.toEdit]
+        toEdit = this.subsidiary
       } else{
-        this.subsidiaryDetails.push({name: this.name, email: this.email, address: this.address, phone: this.phone, state: this.state, city: this.city})
+        this.subService.addSubsidiary(this.subsidiary).subscribe(result => console.log(result))
+        this.subsidiaryDetails.push(this.subsidiary)
       }
-      this.name=''
-      this.email=''
-      this.address=''
-      this.addre=''
-      this.phone=''
-      this.state=''
-      this.city='' 
+      this.subsidiary = this.emptySubsidiary
       this.action = 'save'
       this.isFormOpen = false
       this._snackBar.open('Sucursal Guardada!', 'OK', {duration: this.durationInSeconds})
@@ -86,16 +71,10 @@ export class AddSubsidiaryComponent implements OnInit {
   }
 
   editSubsidiary(i: number): void{
-    this.action = 'edit' 
+    this.action = 'edit'
     this.isFormOpen = true
     this.toEdit = i
-    this.name = this.subsidiaryDetails[i].name
-    this.email = this.subsidiaryDetails[i].email
-    this.address = this.subsidiaryDetails[i].address
-    this.addre = this.subsidiaryDetails[i].addre
-    this.phone = this.subsidiaryDetails[i].phone
-    this.state = this.subsidiaryDetails[i].state
-    this.city = this.subsidiaryDetails[i].city
+    this.subsidiary = this.subsidiaryDetails[i]
   }
 
   openDialog(i: number): void {

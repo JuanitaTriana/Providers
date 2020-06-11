@@ -1,9 +1,16 @@
 export default  interface Subsidiary {
+  name: string;
+  email: string;
+  direction: string;
+  phone: number;
+  nic: number;
+  city: {
     name: string;
-    email: string;
-    address: string;
-    addre?: string;
-    phone: string;
-    state: string;
-    city: string;
-  }
+    departament: {
+      name: string;
+    }
+  };
+  companyId: {
+    nic: number;
+  };
+ }
