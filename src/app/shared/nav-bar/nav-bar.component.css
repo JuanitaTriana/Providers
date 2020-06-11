@@ -40,7 +40,7 @@
  border-bottom: solid #fff 1px;
 }
 .shopping-cart{
-  position: fixed;
+  position: absolute;
   top: var(--navbarh);
   margin: 10px 20px;
   padding: 10px;

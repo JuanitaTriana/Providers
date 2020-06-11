@@ -1,0 +1,7 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+.total {
+  border-top: 1px solid lightgray
+}
