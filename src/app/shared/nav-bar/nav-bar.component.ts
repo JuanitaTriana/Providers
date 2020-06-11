@@ -9,6 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
   isHome: boolean = true;
+  hideCart: boolean = true;
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe((event) => {
@@ -23,7 +24,6 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/providers-list'])
   }
   openCart():void {
-    alert('abre el carrito, cuando exista...')
+    this.hideCart = !this.hideCart
   }
-
 }

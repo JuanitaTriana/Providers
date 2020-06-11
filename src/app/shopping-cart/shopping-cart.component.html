@@ -1,1 +1,16 @@
-<p>shopping-cart works!</p>
+<div class="carrito">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let proveedor of cartItems">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ proveedor.subsidiary }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let product of proveedor.products" class="product-grid">
+          <div>{{product.name}}</div>
+          <div>{{product.value}}</div>
+        </div>
+        <div class="total"><span>Total:</span> {{getTotal(proveedor.subsidiary)}}</div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>

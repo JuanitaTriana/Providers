@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: var(--navbarh);
   display: grid;
   grid-template-columns: 20% 50% 25% 5%;
   align-items: center;
@@ -38,4 +38,22 @@
 }
 .active-item {
  border-bottom: solid #fff 1px;
+}
+.shopping-cart{
+  position: absolute;
+  top: var(--navbarh);
+  margin: 10px 20px;
+  padding: 10px;
+  right: 0px;
+  height: auto;
+  width: 400px;
+  border: solid 1px #673ab7;
+  border-radius: 1em;
+  background-color: white;
+  transition: height 1s, top 1s;
+}
+.hide-cart {
+  height: 0;
+  top: -200px;
+  transition: height 1s, top 1s;
 }

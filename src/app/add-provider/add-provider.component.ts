@@ -21,6 +21,7 @@ export class AddProviderComponent implements OnInit {
     nic: null,
     phone: null
   }
+  goToSub: string = 'goToSub'
 
   duration: 5000
 
@@ -42,11 +43,11 @@ export class AddProviderComponent implements OnInit {
       this.loader.enableLoader()
       this.addProviderService.addProvider(this.provider)
       .subscribe(response => {
-        if (action === 'addSub') {
+        console.log(action)
+        if (action === 'goToSub') {
           localStorage.setItem('providerNic', this.provider.nic.toString())
           this.router.navigate(['/add-subsidiary'])
-        }
-        else this.router.navigate(['/providers-list'])
+        } else this.router.navigate(['/providers-list'])
         this.loader.disableLoader()
         this._snackBar.open('Proveedor Guardado!', 'OK', {duration: this.duration})
       })
