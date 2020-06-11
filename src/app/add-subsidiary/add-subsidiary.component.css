@@ -64,3 +64,13 @@ h1{
 .product-form{
     padding: 20px;
 }
+.prod-rod{
+    width: 600px;
+}
+.add-prod-button{
+    display: flex;
+    width: max-content;
+    align-items: flex-end;
+    justify-content: center;
+    margin-left: 50px;
+}

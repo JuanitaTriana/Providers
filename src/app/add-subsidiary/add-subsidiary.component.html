@@ -146,7 +146,8 @@
           </table>
           <div class="product-form">
             <h2>Agregar Producto</h2>
-            <table class="product-form" cellspacing="0"><tr>
+            <table class="product-form" cellspacing="0">
+              <tr class="prod-rod">
                 <td><mat-form-field class="form-two">
                   <mat-label>ID</mat-label>
                   <input matInput [(ngModel)]="productData.id" name="productData-id">
@@ -159,9 +160,8 @@
                     <mat-label>Precio</mat-label>
                     <input matInput [(ngModel)]="productData.value" name="productData-value">
                 </mat-form-field></td>
-              </tr></table>
-              <table class="product-form" cellspacing="0">
-                  <tr>
+              </tr>
+                  <tr class="prod-rod">
                     <td><mat-form-field class="formt-two">
                         <mat-label>Unidades</mat-label>
                         <input matInput [(ngModel)]="productData.unitMeasure" name="productData-unitMeasure">
@@ -175,9 +175,7 @@
                         <input matInput [(ngModel)]="productData.product.quantity" name="productData-product-quantity">
                     </mat-form-field></td>
                   </tr>
-              </table>
-              <table class="product-form" cellspacing="0">
-                  <tr>
+                  <tr class="prod-rod">
                     <td><mat-form-field class="formt-two">
                         <mat-label>Duracion</mat-label>
                         <input matInput [(ngModel)]="productData.service.duration" name="productData-service-duration">
@@ -186,14 +184,11 @@
                         <mat-label>Plan</mat-label>
                         <input matInput [(ngModel)]="productData.service.plan" name="productData-service-plan">
                     </mat-form-field></td>
-                    <td><mat-form-field class="formt-two">
-                        <mat-label>Sucursal</mat-label>
-                        <input matInput [(ngModel)]="productData.branchOfficeCompan.name" name="productData-branchOfficeCompan-name">
-                    </mat-form-field></td>
+                    <td class="add-prod-button">
+                      <button (click)="addProd()" mat-raised-button color="primary">Agregar</button>
+                    </td>
                   </tr>
-              </table>
-              <button (click)="addProd()" mat-raised-button color="primary">Agregar</button>
-            
+              </table>            
         </div>
           <div class="table-footer">
             <mat-form-field>

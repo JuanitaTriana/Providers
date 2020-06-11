@@ -145,6 +145,7 @@ export class AddSubsidiaryComponent implements OnInit {
   }
 
   getProd(nic: number): void {
+    this.actualNic = nic
     this.productService.getAll().subscribe(result => {
       console.log(result)
       this.productDetails = result.filter(product => product.branchOfficeCompan.nic === nic)
@@ -161,6 +162,7 @@ export class AddSubsidiaryComponent implements OnInit {
   }
 
   addProd() : void {
+    this.productData.branchOfficeCompan.nic = this.actualNic
     this.productService.addProduct(this.productData).subscribe(result => {
       this._snackBar.open('Producto Guardado!', 'OK', {duration: this.durationInSeconds})
       this.getProd(this.actualNic)
